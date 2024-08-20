@@ -27,18 +27,25 @@
       </button>
     </div>
     <script>
-      const button = document.getElementById('play-sound');
-      const countElement = document.getElementById('count');
-      let count = 0;
-
-      button.addEventListener('click', () => {
-        const audio = new Audio('pipe.MP3');
-        audio.currentTime = 0;
-        audio.play();
-        count++;
-        countElement.textContent = count;
-      });
-    </script>
+        const button = document.getElementById('play-sound');
+        const countElement = document.getElementById('count');
+        let count = 0;
+  
+        const playSound = () => {
+          const audio = new Audio('pipe.MP3');
+          audio.currentTime = 0;
+          audio.play();
+          count++;
+          countElement.textContent = count;
+        };
+  
+        button.addEventListener('click', playSound);
+  
+        document.addEventListener('keydown', (event) => {
+          // Optionally, check for specific keys using event.key or event.code
+          playSound();
+        });
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
